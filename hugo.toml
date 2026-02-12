@@ -1,0 +1,37 @@
+
+baseURL = 'https://roruyy.github.io/'
+languageCode = 'zh-tw'
+title = '技術部落格'
+theme = 'PaperMod'
+
+[params]
+  defaultTheme = "auto"  # auto, light, dark
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowWordCount = true
+  ShowRssButtonInSectionTermList = true
+  
+  [params.homeInfoParams]
+    Title = "Hi 👋 歡迎來到我的技術部落格"
+    Content = "定期分享技術文章與閱讀書評"
+
+[[menu.main]]
+  name = "文章"
+  url = "/posts/"
+  weight = 1
+
+[[menu.main]]
+  name = "標籤"
+  url = "/tags/"
+  weight = 2
+
+[[menu.main]]
+  name = "歸檔"
+  url = "/archives/"
+  weight = 3
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
