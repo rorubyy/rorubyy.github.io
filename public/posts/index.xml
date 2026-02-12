@@ -18,37 +18,7 @@
       <link>http://localhost:1313/posts/tech/tech-prefill-decode/</link>
       <pubDate>Thu, 12 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/tech/tech-prefill-decode/</guid>
-      <description>&lt;p&gt;好久沒更新技術日誌，趁過年空檔把腦袋裡的知識點補一補 XD&lt;/p&gt;
-&lt;p&gt;LLM 推理的核心挑戰是什麼？隨著模型參數持續拓展，推理成本、延遲和 GPU 利用率成為服務化的關鍵瓶頸。業界逐漸發現：LLM 推理是由兩個性質完全不同的階段構成——Prefill（計算密集）和 Decode（記憶體密集），分離檢視可開啟新的優化路徑。&lt;/p&gt;
-&lt;p&gt;本文將用務實的角度，帶你理解 &lt;strong&gt;Prefill-Decode 分離架構&lt;/strong&gt;：為什麼把推理拆成兩段，能在顯存、延遲和成本上找到新的優化機會。&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;&lt;strong&gt;看完這篇你將學習到：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;LLM 推理的兩個階段（Prefill vs Decode）以及本質差異&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;為什麼考慮分離部署&lt;/strong&gt;：資源需求不匹配的問題&lt;/li&gt;
-&lt;li&gt;分離能帶來的主要好處：更有效的 batching、成本與延遲優化&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;KV Cache 的核心作用&lt;/strong&gt;：以存換算的概念與挑戰&lt;/li&gt;
-&lt;li&gt;什麼情境適合或不適合做 PD 分離，以及常見實作選擇（如 vLLM、llm-d）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;llm-推理的兩個階段prefill-vs-decode&#34;&gt;LLM 推理的兩個階段：Prefill vs Decode&lt;/h2&gt;
-&lt;h3 id=&#34;什麼是-prefill-和-decode&#34;&gt;什麼是 Prefill 和 Decode？&lt;/h3&gt;
-&lt;p&gt;當我們向 LLM 提問時，模型的推理過程分為兩個階段：&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;使用者輸入：&amp;#34;請幫我總結這篇 5000 字的文章...&amp;#34;
-
-┌─────────┐          ┌─────────┐
-│ Prefill │    →     │ Decode  │
-└─────────┘          └─────────┘
-處理整段輸入 tokens   逐字生成回答
-   (一次性)      (auto-regressive)
-&lt;/code&gt;&lt;/pre&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Prefill 階段&lt;/strong&gt;：處理使用者輸入的所有 token，建立初始的 KV Cache&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Decode 階段&lt;/strong&gt;：基於 Prefill 建立的 KV Cache，逐個生成回答的 token&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;這兩個階段看起來相似，但在計算特性上不完全相同。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h3 id=&#34;prefill計算密集型compute-bound&#34;&gt;Prefill：計算密集型（Compute-Bound）&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;核心特點&lt;/strong&gt;：&lt;/p&gt;</description>
+      <description>探討 LLM 推理優化技術，介紹 Prefill 和 Decode 階段的分離架構及其效能提升</description>
     </item>
     <item>
       <title>範例：生活文章</title>

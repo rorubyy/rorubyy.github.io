@@ -52,12 +52,12 @@ theme = 'PaperMod'
   weight = 4
 
 [[menu.main]]
-  name = "tags"
+  name = "Tags"
   url = "/tags/"
   weight = 5
 
 [[menu.main]]
-  name = "search"
+  name = "Search"
   url = "/search/"
   weight = 6
 
