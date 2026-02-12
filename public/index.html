@@ -6,12 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="noindex, nofollow">
-<title>技術部落格</title>
-
-<meta name="description" content="">
-<meta name="author" content="">
+<title>哈庫那馬塔塔٩( ˵ᐛ ˵)۶</title>
+<meta name="keywords" content="技術筆記, 閱讀心得, 生活記錄, LLM, 程式開發">
+<meta name="description" content="學習與輸出的角落 - 記錄技術、閱讀、生活的個人部落格">
+<meta name="author" content="rorubyy">
 <link rel="canonical" href="http://localhost:1313/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.a29c24210eb31d9ce56f669c66a35c9c51b17376b7764e336a49af7dec914cf0.css" integrity="sha256-opwkIQ6zHZzlb2acZqNcnFGxc3a3dk4zakmvfeyRTPA=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.8068cb2a0962d6a7d6333978c7ae8f60f7f7608eadaaee6a007f542352408f16.css" integrity="sha256-gGjLKgli1qfWMzl4x66PYPf3YI6tqu5qAH9UI1JAjxY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="http://localhost:1313/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
@@ -74,12 +74,15 @@
     }
 
 </script>
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "54c27732c8674f4392ebf52793bbde41"}'></script>
+
+
 </head>
 <body class="list" id="top">
     <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="技術部落格 (Alt + H)">技術部落格</a>
+            <a href="http://localhost:1313/" accesskey="h" title="哈庫那馬塔塔٩( ˵ᐛ ˵)۶ (Alt + H)">哈庫那馬塔塔٩( ˵ᐛ ˵)۶</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -105,30 +108,45 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/posts/" title="文章">
-                    <span>文章</span>
+                <a href="http://localhost:1313/" title="首頁">
+                    <span class="active">首頁</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="標籤">
-                    <span>標籤</span>
+                <a href="http://localhost:1313/categories/tech/" title="Tech">
+                    <span>Tech</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/archives/" title="歸檔">
-                    <span>歸檔</span>
+                <a href="http://localhost:1313/categories/reading/" title="Reading">
+                    <span>Reading</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/categories/life/" title="Life">
+                    <span>Life</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
-<main class="main"> 
+<main class="main home"> 
 <article class="first-entry home-info">
     <header class="entry-header">
-        <h1>Hi 👋 歡迎來到我的技術部落格</h1>
+        <h1>學習與輸出的角落</h1>
     </header>
     <div class="entry-content">
-        定期分享技術文章與閱讀書評
+        好多東東要學習，但腦袋記不住
     </div>
     <footer class="entry-footer">
         <div class="social-icons" >
@@ -138,8 +156,30 @@
 </article>
 
 <article class="post-entry"> 
+<figure class="entry-cover">
+            <img loading="lazy" src="http://localhost:1313/posts/tech/tech-prefill-decode/images/tech-prefill-decode-01.png" alt="Prefill-Decode 架構示意圖">
+</figure>
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Hello World
+    <h2 class="entry-hint-parent">深入理解 LLM 推理：Prefill-Decode 分離架構
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>好久沒更新技術日誌，趁過年空檔把腦袋裡的知識點補一補 XD
+LLM 推理的核心挑戰是什麼？隨著模型參數持續拓展，推理成本、延遲和 GPU 利用率成為服務化的關鍵瓶頸。業界逐漸發現：LLM 推理是由兩個性質完全不同的階段構成——Prefill（計算密集）和 Decode（記憶體密集），分離檢視可開啟新的優化路徑。
+本文將用務實的角度，帶你理解 Prefill-Decode 分離架構：為什麼把推理拆成兩段，能在顯存、延遲和成本上找到新的優化機會。
+看完這篇你將學習到：
+LLM 推理的兩個階段（Prefill vs Decode）以及本質差異 為什麼考慮分離部署：資源需求不匹配的問題 分離能帶來的主要好處：更有效的 batching、成本與延遲優化 KV Cache 的核心作用：以存換算的概念與挑戰 什麼情境適合或不適合做 PD 分離，以及常見實作選擇（如 vLLM、llm-d） LLM 推理的兩個階段：Prefill vs Decode 什麼是 Prefill 和 Decode？ 當我們向 LLM 提問時，模型的推理過程分為兩個階段：
+使用者輸入：&#34;請幫我總結這篇 5000 字的文章...&#34;┌─────────┐ ┌─────────┐│ Prefill │ → │ Decode │└─────────┘ └─────────┘處理整段輸入 tokens 逐字生成回答(一次性) (auto-regressive) Prefill 階段：處理使用者輸入的所有 token，建立初始的 KV Cache Decode 階段：基於 Prefill 建立的 KV Cache，逐個生成回答的 token 這兩個階段看起來相似，但在計算特性上不完全相同。
+Prefill：計算密集型（Compute-Bound） 核心特點：
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-12 00:00:00 +0000 UTC'>February 12, 2026</span>&nbsp;·&nbsp;<span>5 分鐘</span>&nbsp;·&nbsp;<span>917 字</span>&nbsp;·&nbsp;<span>rorubyy</span></footer>
+  <a class="entry-link" aria-label="post link to 深入理解 LLM 推理：Prefill-Decode 分離架構" href="http://localhost:1313/posts/tech/tech-prefill-decode/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">範例：生活文章
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
           <path
@@ -149,15 +189,37 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p></p>
+    <p>這是生活文章的範例 在這裡記錄日常、旅遊、美食、想法等。
+常用的生活標籤建議： 旅遊 美食 攝影 隨筆 思考 年度回顧 如何使用 categories: [&#34;life&#34;] tags: [&#34;旅遊&#34;, &#34;美食&#34;] </p>
   </div>
-  <footer class="entry-footer"><span title='2026-02-12 10:16:28 +0800 CST'>February 12, 2026</span>&nbsp;·&nbsp;<span>0 分鐘</span>&nbsp;·&nbsp;<span>0 字</span></footer>
-  <a class="entry-link" aria-label="post link to Hello World" href="http://localhost:1313/posts/hello-world/"></a>
+  <footer class="entry-footer"><span title='2026-02-11 00:00:00 +0000 UTC'>February 11, 2026</span>&nbsp;·&nbsp;<span>1 分鐘</span>&nbsp;·&nbsp;<span>15 字</span>&nbsp;·&nbsp;<span>rorubyy</span></footer>
+  <a class="entry-link" aria-label="post link to 範例：生活文章" href="http://localhost:1313/posts/life/life-example/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">範例：閱讀文章
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>這是閱讀文章的範例 在這裡分享你的書評、影評、閱讀筆記。
+常用的閱讀標籤建議： 書籍類型
+技術書籍 文學小說 商業管理 自我成長 媒體類型
+書評 影評 劇評 閱讀筆記 如何使用 categories: [&#34;reading&#34;] tags: [&#34;技術書籍&#34;, &#34;書評&#34;] </p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-11 00:00:00 +0000 UTC'>February 11, 2026</span>&nbsp;·&nbsp;<span>1 分鐘</span>&nbsp;·&nbsp;<span>19 字</span>&nbsp;·&nbsp;<span>rorubyy</span></footer>
+  <a class="entry-link" aria-label="post link to 範例：閱讀文章" href="http://localhost:1313/posts/reading/reading-example/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2026 <a href="http://localhost:1313/">技術部落格</a></span> · 
+        <span>&copy; 2026 <a href="http://localhost:1313/">哈庫那馬塔塔٩( ˵ᐛ ˵)۶</a></span> · 
 
     <span>
         Powered by

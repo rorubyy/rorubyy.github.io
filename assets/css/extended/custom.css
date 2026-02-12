@@ -1,0 +1,117 @@
+/* 首頁簡潔布局 */
+.main.home .first-entry.home-info {
+    padding: 40px 0;
+    margin-bottom: 20px;
+}
+
+.main.home .home-info .entry-header h1 {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.main.home .home-info .entry-content {
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* ===== 分類頁面歸檔樣式（技術/閱讀/生活）===== */
+
+/* 確保分類頁面不使用網格布局 */
+body:not(.home) .main {
+    display: block !important;
+}
+
+/* 年份區塊 */
+.archive-year {
+    display: block;
+    margin-bottom: 48px;
+}
+
+/* 年份標題 */
+.archive-year-header {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--border);
+}
+
+/* 文章數量角標 */
+.archive-count {
+    font-size: 0.875rem;
+    font-weight: normal;
+    color: var(--secondary);
+    margin-left: 8px;
+}
+
+/* 月份區塊 */
+.archive-month {
+    display: block;
+    margin-bottom: 32px;
+    margin-left: 20px;
+}
+
+/* 月份標題 */
+.archive-month-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: var(--primary);
+}
+
+/* 文章條目 */
+.archive-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 16px;
+}
+
+.archive-entry:last-child {
+    border-bottom: none;
+}
+
+/* 文章內容區（標題+日期） */
+.archive-entry-content {
+    flex: 1;
+}
+
+/* 文章標題 */
+.archive-entry-title {
+    font-size: 1rem;
+    font-weight: normal;
+    margin: 0 0 6px 0;
+}
+
+.archive-entry-title a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.archive-entry-title a:hover {
+    color: var(--tertiary);
+}
+
+/* 文章日期 */
+.archive-entry-date {
+    font-size: 0.875rem;
+    color: var(--secondary);
+}
+
+/* 縮圖樣式 */
+.archive-entry-thumbnail {
+    flex-shrink: 0;
+    width: 80px;
+    height: 60px;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.archive-entry-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

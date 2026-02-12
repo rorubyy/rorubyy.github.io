@@ -1,0 +1,50 @@
+{{- define "main" }}
+
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">{{ .Description }}</div>
+  {{- end }}
+</header>
+
+{{- $pages := .Pages }}
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- end }}
+
+{{- range ($pages.GroupByDate "2006") }}
+{{- $year := .Key }}
+<div class="archive-year">
+  <h2 class="archive-year-header">
+    {{ $year }} 年
+    <sup class="archive-count">{{ len .Pages }}</sup>
+  </h2>
+  {{- range (.Pages.GroupByDate "1") }}
+  {{- $month := .Key }}
+  <div class="archive-month">
+    <h3 class="archive-month-header">
+      {{ index (slice "1 月" "2 月" "3 月" "4 月" "5 月" "6 月" "7 月" "8 月" "9 月" "10 月" "11 月" "12 月") (sub (int $month) 1) }}
+      <sup class="archive-count">{{ len .Pages }}</sup>
+    </h3>
+    {{- range .Pages }}
+    {{- $page := . }}
+    <div class="archive-entry">
+      <div class="archive-entry-content">
+        <h4 class="archive-entry-title">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h4>
+        <div class="archive-entry-date">{{ .Date.Format "2006-01-02" }}</div>
+      </div>
+      {{- with .Params.cover.image }}
+      <div class="archive-entry-thumbnail">
+        <img src="{{ (printf "%s%s" $page.RelPermalink .) | relURL }}" alt="thumbnail">
+      </div>
+      {{- end }}
+    </div>
+    {{- end }}
+  </div>
+  {{- end }}
+</div>
+{{- end }}
+
+{{- end }}

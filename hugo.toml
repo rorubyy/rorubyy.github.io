@@ -1,37 +1,65 @@
 
 baseURL = 'https://rorubyy.github.io/'
 languageCode = 'zh-tw'
-title = '技術部落格'
+title = '哈庫那馬塔塔٩( ˵ᐛ ˵)۶'
 theme = 'PaperMod'
 
+[params.profileMode]
+  enabled = false
+
+[author]
+  name = "rorubyy"
+
+[pagination]
+  pagerSize = 6  # 首頁顯示 6 篇文章
 [params]
+  description = "學習與輸出的角落 - 記錄技術、閱讀、生活的個人部落格"
+  keywords = ["技術筆記", "閱讀心得", "生活記錄", "LLM", "程式開發"]
+  author = "rorubyy"
+  images = ["/images/og-image.png"]  # 如果有首頁圖片的話
   defaultTheme = "auto"  # auto, light, dark
   ShowReadingTime = true
-  ShowShareButtons = true
+  ShowShareButtons = false  # 關閉分享按鈕
   ShowPostNavLinks = true
   ShowBreadCrumbs = true
   ShowCodeCopyButtons = true
   ShowWordCount = true
   ShowRssButtonInSectionTermList = true
-  
-  [params.homeInfoParams]
-    Title = "Hi 👋 歡迎來到我的技術部落格"
-    Content = "定期分享技術文章與閱讀書評"
 
+  [params.homeInfoParams]
+    Title = "學習與輸出的角落"
+    Content = "好多東東要學習，但腦袋記不住"
+
+# 主導航菜單
 [[menu.main]]
-  name = "文章"
-  url = "/posts/"
+  name = "首頁"
+  url = "/"
   weight = 1
 
 [[menu.main]]
-  name = "標籤"
-  url = "/tags/"
+  name = "Tech"
+  url = "/categories/tech/"
   weight = 2
 
 [[menu.main]]
-  name = "歸檔"
-  url = "/archives/"
+  name = "Reading"
+  url = "/categories/reading/"
   weight = 3
+
+[[menu.main]]
+  name = "Life"
+  url = "/categories/life/"
+  weight = 4
+
+[[menu.main]]
+  name = "tags"
+  url = "/tags/"
+  weight = 5
+
+[[menu.main]]
+  name = "search"
+  url = "/search/"
+  weight = 6
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
