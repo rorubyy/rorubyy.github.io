@@ -285,6 +285,20 @@ KV Cache 有個致命的問題：**它會隨著生成不斷增長**。每生成�
 當我們決定把 Prefill 和 Decode 分開後，實際上需要三個核心組件：
 ![PD 分離組件](images/tech-prefill-decode-04.png)
 
+#### 1. Proxy API Server（控制平面）
+- **職責**：接收用戶請求，負責路由和調度
+- **功能**：
+  - 請求分發到合適的 Prefill Instance
+  - 管理 Prefill 和 Decode Instance 的連接狀態
+  - 處理負載均衡和故障轉移
+
+#### 2. Prefill Instance
+- **職責**：處理輸入序列，生成 KV Cache
+
+#### 3. Decode Instance
+- **職責**：接收 KV Cache，逐步生成回答
+
+
 ```yaml
 ┌─────────────────────┐
 │  Proxy API Server   │ ← 控制平面（HTTP/gRPC）
