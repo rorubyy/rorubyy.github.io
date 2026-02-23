@@ -396,7 +396,7 @@ vLLM 從 0.4.0 版本開始支援 Disaggregated Prefilling，核心思路就是�
 
 ### llm-d：簡化 PD 分離部署
 
-因為 vLLM 的 PD 分離配置複雜、缺少生產級的編排能力，llm-d 項目應運而生。
+因為 vLLM 的 PD 分離配置複雜、缺少生產級的編排能力，llm-d 應運而生。
 
 **llm-d 是什麼？**
 
@@ -405,7 +405,8 @@ llm-d 是建立在 vLLM 之上的**編排和管理層**，目標是簡化 PD 分
 **核心特點**：
 - **Kubernetes-native**
 - **自動化運維**：內建 Proxy、負載均衡、故障恢復
-實際上 llm-d 的運作和架構等到下一篇再繼續了！今天就先停在 Prefill-Decode 架構的理解就好。
+
+llm-d 的運作和架構等到下一篇再繼續了！今天就先停在 Prefill-Decode 架構的理解就好。
 
 ---
 
